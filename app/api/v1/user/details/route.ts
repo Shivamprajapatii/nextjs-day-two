@@ -1,14 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
 
+const Prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
-    //const data = await await req.json();
-    
-    const { username, password } = await req.json();
+    const { name, email } = await req.json();
+
+    await Prisma.user.create({
+        data : {
+            name,
+            email
+        }
+    });
 
     return NextResponse.json({
-        message: "Bro this is POST Request!"
-    })
+        message: "Signup Done!",
+    });
 };
 
 
