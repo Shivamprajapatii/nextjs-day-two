@@ -1,22 +1,25 @@
-import { NextResponse } from "next/server";
-export function GET(){
+import { NextRequest, NextResponse } from "next/server";
+
+export function GET() {
     return NextResponse.json({
-        "name" : "Shivam",
-        "email" : "Shivay@gmail"
+        "name": "Shivam",
+        "email": "Shivay@gmail"
     })
 };
-export function POST(){
+export async function POST(req: NextRequest) {
+    const { username, password } = await req.json();
+
     return NextResponse.json({
-        message : "Bro this is POST Request!"
+        message: "Bro this is POST Request!"
     })
 };
-export function DELETE(){
+export function DELETE() {
     return NextResponse.json({
-        message : "Bro this is Delete Request!"
+        message: "Bro this is Delete Request!"
     })
 };
-export function PUT(){
+export function PUT() {
     return NextResponse.json({
-        message : "Bro this is PUT request Bro!"
+        message: "Bro this is PUT request Bro!"
     })
 };
